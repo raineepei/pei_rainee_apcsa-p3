@@ -1,7 +1,7 @@
 //(c) A+ Computer Science
 //www.apluscompsci.com
-//Name -
-//Date -
+//Name - Rainee Pei
+//Date - 02/09/19
 
 public class VowelsRunner
 {

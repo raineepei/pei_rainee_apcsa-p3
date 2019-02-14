@@ -1,12 +1,17 @@
 //(c) A+ Computer Science
+
 //www.apluscompsci.com
 
-//Name -
-//Date -
-//Class -
-//Lab  -
+//Name - Rainee Pei
+//Date - 02/12/19
+//Class - APCSA
+//Lab  - Dictionary
+
+import java.util.Scanner; 
 
 import static java.lang.System.*;
+
+
 
 public class WordsCompare
 {
@@ -15,19 +20,24 @@ public class WordsCompare
 
 	public WordsCompare()
 	{
+		setWords("","");
+		compare = 0;
 	}
 
 	public WordsCompare(String one, String two)
 	{
+		setWords(one, two);	
 	}
 
 	public void setWords(String one, String two)
 	{
-
+		wordOne = one;
+		wordTwo = two;
 	}
 
 	public void compare()
 	{
+		compare = wordOne.compareTo(wordTwo);
 	}
 
 	public String toString()
@@ -40,5 +50,6 @@ public class WordsCompare
 		{
 			return wordOne + " should be placed after " + wordTwo + "\n";
 		}
+		
 	}
 }
