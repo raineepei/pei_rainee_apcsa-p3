@@ -1,12 +1,15 @@
 //(c) A+ Computer Science
+
 //www.apluscompsci.com
 
-//Name -
-//Date -
-//Class -
-//Lab  -
+//Name - Rainee Pei
+//Date - 01/31/19
+//Class - APCSA
+//Lab  - Input
 
 import static java.lang.System.*;
+
+
 import java.util.Scanner;
 
 public class Input

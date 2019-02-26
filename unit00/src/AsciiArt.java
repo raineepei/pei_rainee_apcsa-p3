@@ -12,7 +12,7 @@ public class AsciiArt
 	{
 		System.out.println("Rainee Pei \n\n" );
 		System.out.println("What type of ANIMAL YOU WILL DRAW" );
-		System.out.println("Cat" );
+		System.out.println("Cat");
 		System.out.println("\n\n\n\n" );
 
 		System.out.println("        /\\         /\\       " );
