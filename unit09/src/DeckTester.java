@@ -29,7 +29,7 @@ public class DeckTester {
 		
 		int temp = deck1.size();
 		for (int i = 0; i < temp; i++) {
-			deck2.deal();
+			deck1.deal();
 		}
 		System.out.println(deck1);
 		}
