@@ -18,15 +18,20 @@ public class DeckTester {
 		deck1.shuffle();
 		System.out.println(deck1);
 		
-		Deck deck2 = new Deck(new String[] {"ace", "2", "3", "4", "5", "6", "7", "8", "9", "10", "jack", "queen", "king"}, 
-				new String[] {"spades", "hearts", "diamonds", "clubs"},
-				new int[] {13, 12, 11, 10, 9, 8, 7, 6, 5, 4, 3, 2, 1});
+		Deck deck2 = new Deck(new String[] {"10", "jack", "queen"}, 
+				new String[] {"spades", "hearts", "diamonds"},
+				new int[] {13, 12, 11});
 		
-		int n = deck2.size();
-		for (int i = 0; i < n; i++) {
-			deck2.shuffle();
+		System.out.println(deck2);
+		deck2.deal();
+		deck2.deal();
+		System.out.println(deck2);
+		
+		int temp = deck1.size();
+		for (int i = 0; i < temp; i++) {
 			deck2.deal();
-			System.out.println(deck2);
+		}
+		System.out.println(deck1);
 		}
 }
-}
+
