@@ -7,6 +7,7 @@
 //Lab  - Miles Per Hour
 
 import java.util.Scanner; 
+
 import static java.lang.System.*;
 import static java.lang.Math.*;
 
