@@ -108,6 +108,26 @@ public class Picture extends SimplePicture
 	  }
   }
   
+  public void keepOnlyRed() {
+	  Pixel[][] pixels = this.getPixels2D();
+	  for (Pixel[] rowArray : pixels) {
+		  for (Pixel pixelObj : rowArray) {
+			  pixelObj.setBlue(0);
+			  pixelObj.setGreen(0);
+		  }
+	  }
+  }
+  
+  public void keepOnlyGreen() {
+	  Pixel[][] pixels = this.getPixels2D();
+	  for (Pixel[] rowArray : pixels) {
+		  for (Pixel pixelObj : rowArray) {
+			  pixelObj.setBlue(0);
+			  pixelObj.setGreen(0);
+		  }
+	  }
+  }
+  
   public void negate() {
 	  Pixel[][] pixels = this.getPixels2D();
 	  for (Pixel[] rowArray : pixels) {
@@ -498,7 +518,6 @@ public class Picture extends SimplePicture
       else if (a > 255) return 255;
       else              return a;
   }
-  
   
   /* Main method for testing - each class in Java can have a main 
    * method 
