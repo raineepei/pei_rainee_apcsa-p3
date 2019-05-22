@@ -506,6 +506,99 @@ public class Picture extends SimplePicture
 	  }
   }
   
+  public void encode(Picture messagePict)
+  {
+	  Pixel[][] currentPixels = this.getPixels2D();
+	  Pixel[][] messagePixels = messagePict.getPixels2D();
+	  Pixel currentPixel = null;
+	  Pixel messagePixel = null;
+	  int count = 0;
+	  for (int row = 0; row < this.getHeight(); row++)
+	  {
+		  for (int col = 0; col < this.getWidth(); col++)
+		  {
+			  currentPixel = currentPixels[row][col];
+			  messagePixel = messagePixels[row][col];
+			  //2 primes = nonprime; 1 prime + 1 nonprime = prime; 2 nonprimes = nonprime;
+			  if (!isPrime(currentPixel.getGreen()))
+			  {
+			  while (isPrime(currentPixel.getBlue()))
+				  {
+				  currentPixel.setBlue(currentPixel.getBlue() + 1);
+				  }
+			  }
+			  if (isPrime(currentPixel.getGreen()))
+			  {
+			  while (!isPrime(currentPixel.getBlue()))
+				  {
+				  currentPixel.setBlue(currentPixel.getBlue() + 1);
+				  }
+			  }
+			  if (messagePixel.colorDistance(Color.BLACK) < 50)
+			  {
+				  count++;
+				  if (!isPrime(currentPixel.getGreen()))
+				  {
+				  while (!isPrime(currentPixel.getBlue()))
+				  {
+					  currentPixel.setBlue(currentPixel.getBlue() - 1); 
+				  }
+				  }
+				  if (isPrime(currentPixel.getGreen()))
+				  {
+				  while (isPrime(currentPixel.getBlue()))
+				  {
+					  currentPixel.setBlue(currentPixel.getBlue() - 1); 
+				  }
+				  }
+			  }
+		  }
+	  }
+	  System.out.println(count);
+  }
+  
+  public Picture decode()
+  {
+	  Pixel[][] pixels = this.getPixels2D();
+	  int height = this.getHeight();
+	  int width = this.getWidth();
+	  Pixel currentPixel = null;
+	  Pixel messagePixel = null;
+	  Picture messagePicture = new Picture(height, width);
+	  Pixel[][] messagePixels = messagePicture.getPixels2D();
+	  int count = 0;
+	  for (int row = 0; row < this.getHeight(); row++)
+	  {
+		  for (int col = 0; col < this.getWidth(); col++)
+		  {
+			  currentPixel = pixels[row][col];
+			  messagePixel = messagePixels[row][col];
+			//2 primes = nonprime; 1 prime + 1 nonprime = prime; 2 nonprimes = nonprime;
+			  if ((isPrime(currentPixel.getGreen()) && isPrime(currentPixel.getBlue()))
+				  || (!isPrime(currentPixel.getGreen()) && !isPrime(currentPixel.getBlue())))
+			  {
+				  messagePixel.setColor(Color.WHITE);
+			  }
+			  if (!isPrime(currentPixel.getGreen()) && isPrime(currentPixel.getBlue())
+				  || isPrime(currentPixel.getGreen()) && !isPrime(currentPixel.getBlue()))
+			  {
+				  count++;
+				  messagePixel.setColor(Color.BLACK);
+			  }
+		  }
+	  }
+	  System.out.println(count);
+	  return messagePicture;
+  }
+  
+  public static boolean isPrime(int number){
+      for (int i = 2; i < number / 2; i++)
+      {
+          if (number % i == 0) return false;
+      }
+      return true;
+  }
+  
   public static Color avgColor(Color one, Color two, Color three) {
 	  int avgRed = (one.getRed() + two.getRed() + three.getRed())/3;
 	  int avgBlue = (one.getBlue() + two.getBlue() + three.getBlue())/3;
@@ -524,10 +617,13 @@ public class Picture extends SimplePicture
    */
   public static void main(String[] args) 
   {
-    Picture beach = new Picture("beach.jpg");
-    beach.explore();
-    beach.zeroBlue();
-    beach.explore();
+	  Picture back = new Picture ("src/images/beach.jpg");
+	  Picture message = new Picture ("src/images/apple_icon.jpg");
+	  back.explore();
+	  back.encode(message);
+	  back.explore();
+	  Picture dec = back.decode();
+	  dec.explore();
   }
   
 } // this } is the end of class Picture, put all new methods before this

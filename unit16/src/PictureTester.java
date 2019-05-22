@@ -122,12 +122,25 @@ public class PictureTester
 	    swan.explore();
 	  }
 	  
-	  public static void testEdgeDetection2() {
+	  public static void testEdgeDetection2() 
+	  {
 		  Picture swan = new Picture("src/images/swan.jpg");
 		  swan.explore();
 		  swan.edgeDetection2(17);
 		  swan.explore();
 	  }
+	  
+	  public static void testEncodeDecode()
+	  {
+		  Picture back = new Picture ("src/images/beach.jpg");
+		  Picture message = new Picture ("src/images/msg.jpg");
+		  back.encode(message);
+		  back.explore();
+		  Picture my = back.decode();
+		  my.explore();
+	  }
+	  
+	  
   
   /** Main method for testing.  Every class can have a main
     * method in Java */
@@ -136,7 +149,7 @@ public class PictureTester
     // uncomment a call here to run a test
     // and comment out the ones you don't want
     // to run
-    testZeroBlue();
+    //testZeroBlue();
     //testKeepOnlyBlue();
     //testKeepOnlyRed();
     //testKeepOnlyGreen();
@@ -150,7 +163,6 @@ public class PictureTester
 	//testMirrorHorizontal();
     //testMirrorTemple();
     //testMirrorArms();
-    //testMirrorGull();
     //testMirrorDiagonal();
     //testCollage();
     //testCopy();
@@ -162,5 +174,6 @@ public class PictureTester
     //testSetRedToHalfValueInTopHalf();
     //testClearBlueOverValue(200);
     //testGetAverageForColumn(0);
+	  testEncodeDecode();
   }
 }
